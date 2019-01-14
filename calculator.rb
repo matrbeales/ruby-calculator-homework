@@ -1,5 +1,5 @@
 # Calculator Type
-$stdout.puts "Please select a calculator: (a)dvanced or (b)asic"
+$stdout.puts "Please select a calculator: (a)dvanced or (b)asic or (bmi)"
 $stdout.flush
 calculator_type = $stdin.gets.chomp
 
@@ -8,10 +8,14 @@ if calculator_type == "b"
   $stdout.puts "Would you like to do (a)ddition, (s)ubtraction, (m)ultiplication or (d)ivision"
   $stdout.flush
   basic_calculation_type = $stdin.gets.chomp
-else
+elsif calculator_type == "a"
   $stdout.puts "Would you like to do (p)ower or (s)quare root a number"
   $stdout.flush
   advanced_calculation_type = $stdin.gets.chomp
+elsif calculator_type == "bmi"
+  $stdout.puts "Would you like to do (i)mperial or (m)etric"
+  $stdout.flush
+  bmi_calculation_type = $stdin.gets.chomp
 end
 
 # Addition
@@ -95,4 +99,34 @@ elsif advanced_calculation_type == "s"
       $stdout.flush
     end
   square_root square_root_number
+end
+
+# BMI
+# Imperial
+if bmi_calculation_type == "i"
+  $stdout.puts "Enter your weight in pounds"
+  $stdout.flush
+  weight_pounds = $stdin.gets.chomp
+  $stdout.puts "Enter your height in inches"
+  $stdout.flush
+  height_inches = $stdin.gets.chomp
+    def bmi_imperial weight_pounds, height_inches
+      $stdout.puts (weight_pounds.to_f / (height_inches.to_f * height_inches.to_f) * 703)
+      $stdout.flush
+    end
+  bmi_imperial weight_pounds, height_inches
+
+# Metric
+elsif bmi_calculation_type == "m"
+  $stdout.puts "Enter your weight in kilos"
+  $stdout.flush
+  weight_kilos = $stdin.gets.chomp
+  $stdout.puts "Enter your height in metres"
+  $stdout.flush
+  height_metres = $stdin.gets.chomp
+    def bmi_imperial weight_kilos, height_metres
+      $stdout.puts (weight_kilos.to_f / (height_metres.to_f * height_metres.to_f))
+      $stdout.flush
+    end
+  bmi_imperial weight_kilos, height_metres
 end
